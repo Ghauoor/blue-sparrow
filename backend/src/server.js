@@ -1,13 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
-
-dotenv.config();
+import { ENV } from "./config/env.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
 
+connectDB();
 app.use(cors());
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(ENV.PORT, () => {
+    console.log(`Server is running on port http://localhost:${ENV.PORT}`);
 });
